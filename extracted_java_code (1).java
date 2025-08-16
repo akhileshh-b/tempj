@@ -1,3 +1,7 @@
+// minute changes hai is code mein. 
+// hardly 2-3 minutes ke changes h. 
+// all the best  
+
 import java.util.*;
 import java.io.*;
 
