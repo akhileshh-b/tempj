@@ -1,3 +1,28 @@
+// Change 1: Replaced custom hash table with HashMap
+// javastatic HashMap<String, Node> finder;  // Instead of NodeFinder
+// Change 2: Added helper method for parent chain updates
+// javastatic void updateParentChain(Node node, int delta) {
+//     Node temp = node.parent;
+//     while (temp != null) {
+//         temp.downCount += delta;
+//         temp = temp.parent;
+//     }
+// }
+// Changes 3 & 4: Use helper method in lock/unlock
+// javaupdateParentChain(var, 1);   // Instead of manual while loop
+// updateParentChain(b, -1);    // Instead of manual while loop
+// Change 5: Optimized upgrade operation
+
+// Batch unlock without calling doUnlock() (which causes redundant parent updates)
+// Single parent chain update with net change
+// Eliminates the major TLE bottleneck
+
+// Change 6: Initialize HashMap instead of custom NodeFinder
+// Removed Code:
+
+// Entire NodeFinder class (60+ lines of inefficient code)
+
+
 import java.util.*;
 import java.io.*;
 
@@ -261,4 +286,5 @@ class TestClass {
         
         sc.close();
     }
+
 }
