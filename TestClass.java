@@ -22,7 +22,6 @@
 
 // Entire NodeFinder class (60+ lines of inefficient code)
 
-
 import java.util.*;
 import java.io.*;
 
@@ -42,57 +41,9 @@ class Node {
     }
 }
 
-// Custom hash table implementation instead of HashMap
-class NodeFinder {
-    private ArrayList<ArrayList<Node>> buckets;
-    private int size;
-    
-    NodeFinder() {
-        size = 10007; // prime number for better distribution
-        buckets = new ArrayList<>(size);
-        for (int i = 0; i < size; i++) {
-            buckets.add(new ArrayList<>());
-        }
-    }
-    
-    private int hash(String key) {
-        int hashVal = 0;
-        for (int i = 0; i < key.length(); i++) {
-            hashVal = hashVal * 31 + key.charAt(i);
-        }
-        return Math.abs(hashVal) % size;
-    }
-    
-    void put(String key, Node value) {
-        int idx = hash(key);
-        ArrayList<Node> bucket = buckets.get(idx);
-        
-        // Check if key already exists
-        for (int i = 0; i < bucket.size(); i++) {
-            if (bucket.get(i).label.equals(key)) {
-                bucket.set(i, value);
-                return;
-            }
-        }
-        bucket.add(value);
-    }
-    
-    Node get(String key) {
-        int idx = hash(key);
-        ArrayList<Node> bucket = buckets.get(idx);
-        
-        for (Node node : bucket) {
-            if (node.label.equals(key)) {
-                return node;
-            }
-        }
-        return null;
-    }
-}
-
 class TestClass {
     static Node root;
-    static NodeFinder finder;
+    static HashMap<String, Node> finder;  // CHANGE 1: Use HashMap instead of custom implementation
     
     // Build mapping using iterative DFS approach
     static void setupFinder(Node start) {
@@ -153,6 +104,15 @@ class TestClass {
         return true;
     }
     
+    // CHANGE 2: Add helper method for batch parent updates
+    static void updateParentChain(Node node, int delta) {
+        Node temp = node.parent;
+        while (temp != null) {
+            temp.downCount += delta;
+            temp = temp.parent;
+        }
+    }
+    
     // Lock operation - check user first, then ancestors/descendants
     static boolean doLock(String name, int uid) {
         Node var = finder.get(name);
@@ -163,11 +123,7 @@ class TestClass {
         if (var.upCount > 0 || var.downCount > 0) return false;
         
         // Update parent chain
-        Node temp1 = var.parent;
-        while (temp1 != null) {
-            temp1.downCount++;
-            temp1 = temp1.parent;
-        }
+        updateParentChain(var, 1);  // CHANGE 3: Use helper method
         
         // Fix all descendants
         fixDescendants(var, 1);
@@ -188,11 +144,7 @@ class TestClass {
         if (!b.isLocked || b.userId != uid) return false;
         
         // Update parent chain
-        Node temp2 = b.parent;
-        while (temp2 != null) {
-            temp2.downCount--;
-            temp2 = temp2.parent;
-        }
+        updateParentChain(b, -1);  // CHANGE 4: Use helper method
         
         // Fix descendants
         fixDescendants(b, -1);
@@ -204,7 +156,7 @@ class TestClass {
         return true;
     }
     
-    // Upgrade - different order of checks
+    // CHANGE 5: Optimized upgrade operation
     static boolean doUpgrade(String name, int uid) {
         Node c = finder.get(name);
         if (c == null) return false; // Handle invalid node names
@@ -220,13 +172,22 @@ class TestClass {
             return false;
         }
         
-        // Unlock all descendants first
+        // OPTIMIZED: Batch unlock without individual parent updates
         for (Node temp : three) {
-            doUnlock(temp.label, uid);
+            temp.isLocked = false;
+            temp.userId = 0;
+            fixDescendants(temp, -1);  // Fix descendants for each unlocked node
         }
         
-        // Then lock current node
-        return doLock(name, uid);
+        // Update parent chain once with net change
+        updateParentChain(c, three.size());
+        
+        // Fix descendants and lock current node
+        fixDescendants(c, 1);
+        c.isLocked = true;
+        c.userId = uid;
+        
+        return true;
     }
     
     public static void main(String args[]) throws Exception {
@@ -259,8 +220,8 @@ class TestClass {
             }
         }
         
-        // Setup custom node finder
-        finder = new NodeFinder();
+        // Setup finder
+        finder = new HashMap<>();  // CHANGE 6: Initialize HashMap
         setupFinder(root);
         
         // Process queries
@@ -286,5 +247,4 @@ class TestClass {
         
         sc.close();
     }
-
 }
