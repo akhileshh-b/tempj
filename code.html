@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B600%3B700&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-50: #eff6ff;
+        --primary-100: #dbeafe;
+        --primary-200: #bfdbfe;
+        --primary-300: #93c5fd;
+        --primary-400: #60a5fa;
+        --primary-500: #3b82f6;
+        --primary-600: #2563eb;
+        --primary-700: #1d4ed8;
+        --primary-800: #1e40af;
+        --primary-900: #1e3a8a;
+      }
+      .table-clickable-row {
+        cursor: pointer;
+      }
+      .table-clickable-row:hover {
+        @apply bg-gray-50;
+      }
+    </style>
+</head>
+<body class="bg-gray-50" style='font-family: Inter, "Noto Sans", sans-serif;'>
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 bg-white px-6 py-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-gray-800">
+<svg class="h-8 w-8 text-[var(--primary-600)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path>
+</svg>
+<h2 class="text-xl font-bold">HSR Motors</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-gray-600 hover:text-gray-900 text-sm font-medium" href="#">Dashboard</a>
+<a class="text-[var(--primary-600)] text-sm font-semibold" href="#">Leads</a>
+<a class="text-gray-600 hover:text-gray-900 text-sm font-medium" href="#">Inventory</a>
+<a class="text-gray-600 hover:text-gray-900 text-sm font-medium" href="#">Sales</a>
+<a class="text-gray-600 hover:text-gray-900 text-sm font-medium" href="#">Marketing</a>
+<a class="text-gray-600 hover:text-gray-900 text-sm font-medium" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center">
+<label class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"> search </span>
+<input class="form-input w-full rounded-md border-gray-300 bg-white pl-10 pr-4 py-2 text-sm text-gray-800 placeholder:text-gray-500 focus:border-[var(--primary-500)] focus:ring-[var(--primary-500)]" placeholder="Search..." type="search"/>
+</label>
+</div>
+<button class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBsLcTwPUWMvxbZfW3QYOZ6o6M0KWq9Du2phpr-s4KMToP4lN3L2JWEPb64cipZAfZqLlUael4iNKJzvg6BkcpQXapkiuxWg8HlzKl5jzgVr0Ea06yE0xjZOnu4Hwrp1GfQ0LgaTaWzUUu_8JVJXQSLHFYm9u-9VdnhmQ_MwZwoNdYiy78KmGSv2a2tJ85d25Y0DV-bzSIFCCXSTCd38_lrY75265pVOHnJSQjWOdTwGSNK8Uqcua7AsScnSty3wYT_CTHA7pq26ZoQ");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+<h1 class="text-3xl font-bold text-gray-900">All Leads</h1>
+<button class="flex items-center justify-center gap-2 rounded-md bg-[var(--primary-600)] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[var(--primary-700)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-500)] focus:ring-offset-2">
+<span class="material-symbols-outlined"> add </span>
+<span class="truncate">New Lead</span>
+</button>
+</div>
+<div class="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
+<div class="flex flex-col sm:flex-row gap-4 mb-4">
+<div class="flex-1">
+<label class="sr-only" for="search-leads">Search leads</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"> search </span>
+<input class="form-input w-full rounded-md border-gray-300 bg-white pl-10 pr-4 py-2 text-sm text-gray-800 placeholder:text-gray-500 focus:border-[var(--primary-500)] focus:ring-[var(--primary-500)]" id="search-leads" placeholder="Search leads by name, contact..." type="search" value=""/>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex h-10 items-center justify-center gap-x-2 rounded-md border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 hover:bg-gray-50">
+<span>Status</span>
+<span class="material-symbols-outlined text-gray-500 text-base"> expand_more </span>
+</button>
+<button class="flex h-10 items-center justify-center gap-x-2 rounded-md border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 hover:bg-gray-50">
+<span>Source</span>
+<span class="material-symbols-outlined text-gray-500 text-base"> expand_more </span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<div class="min-w-full @container">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 w-[30%]" scope="col">Name</th>
+<th class="table-column-240 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 w-[20%]" scope="col">Source</th>
+<th class="table-column-360 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 w-[15%]" scope="col">Status</th>
+<th class="table-column-480 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 w-[15%]" scope="col">Last Activity</th>
+<th class="table-column-600 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 w-[15%]" scope="col">Priority</th>
+<th class="relative py-3.5 pl-3 pr-4 sm:pr-6 w-[5%]" scope="col"><span class="sr-only">Star</span></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 bg-white">
+<tr class="table-clickable-row">
+<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+<div class="font-medium text-gray-900">Arjun Verma</div>
+<div class="text-gray-500">+91 9876543210</div>
+</td>
+<td class="table-column-240 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Google Ads</td>
+<td class="table-column-360 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">New</span>
+</td>
+<td class="table-column-480 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Called 2 days ago</td>
+<td class="table-column-600 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">High</span>
+</td>
+<td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+<button class="text-gray-400 hover:text-yellow-500"><span class="material-symbols-outlined text-xl">star_outline</span></button>
+</td>
+</tr>
+<tr class="table-clickable-row">
+<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+<div class="font-medium text-gray-900">Priya Sharma</div>
+<div class="text-gray-500">+91 8765432109</div>
+</td>
+<td class="table-column-240 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Website</td>
+<td class="table-column-360 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">Contacted</span>
+</td>
+<td class="table-column-480 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Emailed 5 days ago</td>
+<td class="table-column-600 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">Medium</span>
+</td>
+<td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+<button class="text-yellow-400 hover:text-yellow-500"><span class="material-symbols-outlined text-xl">star</span></button>
+</td>
+</tr>
+<tr class="table-clickable-row">
+<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+<div class="font-medium text-gray-900">Rahul Kapoor</div>
+<div class="text-gray-500">+91 7654321098</div>
+</td>
+<td class="table-column-240 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Dealership Event</td>
+<td class="table-column-360 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800">Qualified</span>
+</td>
+<td class="table-column-480 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Met 1 week ago</td>
+<td class="table-column-600 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">Low</span>
+</td>
+<td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+<button class="text-gray-400 hover:text-yellow-500"><span class="material-symbols-outlined text-xl">star_outline</span></button>
+</td>
+</tr>
+<tr class="table-clickable-row">
+<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+<div class="font-medium text-gray-900">Sneha Singh</div>
+<div class="text-gray-500">+91 6543210987</div>
+</td>
+<td class="table-column-240 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Referral</td>
+<td class="table-column-360 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">Closed</span>
+</td>
+<td class="table-column-480 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Signed 2 weeks ago</td>
+<td class="table-column-600 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">High</span>
+</td>
+<td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+<button class="text-gray-400 hover:text-yellow-500"><span class="material-symbols-outlined text-xl">star_outline</span></button>
+</td>
+</tr>
+<tr class="table-clickable-row">
+<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+<div class="font-medium text-gray-900">Vikram Patel</div>
+<div class="text-gray-500">+91 5432109876</div>
+</td>
+<td class="table-column-240 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Google Ads</td>
+<td class="table-column-360 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">New</span>
+</td>
+<td class="table-column-480 whitespace-nowrap px-3 py-4 text-sm text-gray-500">Received 3 days ago</td>
+<td class="table-column-600 whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">Medium</span>
+</td>
+<td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+<button class="text-gray-400 hover:text-yellow-500"><span class="material-symbols-outlined text-xl">star_outline</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+<style>
+                      @container (max-width: 240px) { .table-column-240 { display: none; } }
+                      @container (max-width: 360px) { .table-column-360 { display: none; } }
+                      @container (max-width: 480px) { .table-column-480 { display: none; } }
+                      @container (max-width: 600px) { .table-column-600 { display: none; } }
+                    </style>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
